@@ -130,7 +130,7 @@ This MCP server runs in a Docker container based on Kali Linux and exposes secur
 ### 1. Clone or Download
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Nandha-06/Kali-mcp.git
 cd kali-mcp-cli
 ```
 
