@@ -1,0 +1,33 @@
+services:
+  kali-mcp:
+    build: .
+    container_name: kali-mcp-server
+    ports:
+      - "3000:3000"
+    environment:
+      - DEBIAN_FRONTEND=noninteractive
+      - TERM=xterm-256color
+      
+    volumes:
+      - ./shared:/home/kaliuser/shared
+      - ./wordlists:/home/kaliuser/wordlists
+    networks:
+      - pentest-network
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    privileged: true
+
+networks:
+  pentest-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  shared:
+  wordlists:
